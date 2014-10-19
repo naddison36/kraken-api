@@ -1,5 +1,5 @@
 {
-  "name": "kraken-api",
+  "name": "kraken-exchange-api",
   "version": "0.1.0",
   "description": "Kraken API Client for Node.JS",
   "main": "kraken.js",
@@ -13,7 +13,9 @@
   },
   "keywords": [
     "kraken",
-    "api"
+    "api",
+    "btc",
+    "exchange"
   ],
   "repository": {
     "type": "git",
