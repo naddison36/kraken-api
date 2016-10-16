@@ -1,6 +1,8 @@
 var request		= require('request');
 var crypto		= require('crypto');
 var querystring	= require('querystring');
+var VError		= require('verror');
+var util		= require('util');
 
 /**
  * KrakenClient connects to the Kraken.com API
@@ -39,7 +41,7 @@ function KrakenClient(key, secret, otp) {
 			return privateMethod(method, params, callback);
 		}
 		else {
-			throw new Error(method + ' is not a valid API method.');
+			callback(new VError(method + ' is not a valid API method.') );
 		}
 	}
 
@@ -127,12 +129,15 @@ function KrakenClient(key, secret, otp) {
 			timeout: config.timeoutMS
 		};
 
+		var requestDesc = util.format('%s request to url %s with params %s',
+			options.method, options.url, JSON.stringify(params));
+
 		var req = request.post(options, function(error, response, body) {
 			if(typeof callback === 'function') {
 				var data;
 
 				if(error) {
-					callback.call(self, new Error('Error in server response: ' + JSON.stringify(error)), null);
+					callback.call(self, new VError(error, 'Error from %s. Server response: %s', requestDesc, JSON.stringify(error)), null);
 					return;
 				}
 
@@ -140,12 +145,12 @@ function KrakenClient(key, secret, otp) {
 					data = JSON.parse(body);
 				}
 				catch(e) {
-					callback.call(self, new Error('Could not understand response from server: ' + body), null);
+					callback.call(self, new VError(e, 'Could not JSON parse response from %s. Response body: %s ', requestDesc, body), null);
 					return;
 				}
 
 				if(data.error && data.error.length) {
-					callback.call(self, data.error, null);
+					callback.call(self, new VError('Error returned from %s. Error: ', requestDesc, data.error), null);
 				}
 				else {
 					callback.call(self, null, data);

@@ -1,11 +1,12 @@
 {
-  "name": "kraken-exchange-api",
-  "version": "0.1.0",
+  "name": "kraken-api",
+  "version": "0.1.1",
   "description": "Kraken API Client for Node.JS",
   "main": "kraken.js",
   "dependencies": {
     "querystring": ">=0.2.0",
-    "request": ">=2.27.0"
+    "request": ">=2.27.0",
+    "verror": "git://github.com/naddison36/node-verror.git#v0.0.3"
   },
   "devDependencies": {},
   "scripts": {
@@ -19,8 +20,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/5an1ty/kraken-api"
+    "url": "https://github.com/naddison36/kraken-api"
   },
-  "author": "Ruben Callewaert",
+  "author": "Robert Myers",
+  "contributors": ["Ruben Callewaert", "Nick Addison"],
   "license": "MIT"
 }

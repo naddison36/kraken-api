@@ -35,6 +35,5 @@ kraken.api('Ticker', {"pair": 'XBTCXLTC'}, function(error, data) {
 ```
 
 Credit:
-
-This is a fork of the npm-kraken-api project including my own modifications:
-https://github.com/nothingisdead/npm-kraken-api
+This is a fork of the [kraken-exchange-api](https://github.com/5an1ty/kraken-api) project which is a fork of [npm-kraken-api](https://github.com/nothingisdead/npm-kraken-api) project.
+The main change is the use of VErrors which allow errors to be nested.
