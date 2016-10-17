@@ -19,7 +19,7 @@ var client = new Kraken(key, secret);
 //         console.log(data.result);
 //     }
 // });
-
+//
 // // Display user's balance
 // client.api('Balance', null, function(error, data) {
 //     if(error) {
@@ -29,8 +29,9 @@ var client = new Kraken(key, secret);
 //         console.log(data.result);
 //     }
 // });
-
-// var testOrder = {
+//
+// // add a limit sell order for the ETHUSD pair
+// var testLimitOrder = {
 //     "pair": 'XETHZUSD',
 //     "type": "sell",
 //     "ordertype": "limit",
@@ -38,7 +39,7 @@ var client = new Kraken(key, secret);
 //     "volume": "0.1"
 // };
 //
-// client.api('AddOrder', testOrder, function(error, data) {
+// client.api('AddOrder', testLimitOrder, function(error, data) {
 //     if(error) {
 //         console.log(error);
 //     }
@@ -47,6 +48,34 @@ var client = new Kraken(key, secret);
 //     }
 // });
 //
+// // add a market sell order for the BTCUSD pair
+// var testMarketOrder = {
+//     "pair": 'XXBTZUSD',
+//     "type": "sell",
+//     "ordertype": "market",
+//     "volume": "0.001"
+// };
+//
+// client.api('AddOrder', testMarketOrder, function(error, data) {
+//     if(error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log(data.result);
+//     }
+// });
+//
+// // get order information
+// client.api('QueryOrders', {"txid": "OADWQW-4BSC7-ZECXTG"}, function(error, data) {
+//     if(error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log(JSON.stringify(data.result));
+//     }
+// });
+//
+// // get all open orders
 // client.api('OpenOrders', null, function(error, data) {
 //     if(error) {
 //         console.log(error);
@@ -55,7 +84,8 @@ var client = new Kraken(key, secret);
 //         console.log(JSON.stringify(data.result));
 //     }
 // });
-
+//
+// // cancel an order
 // client.api('CancelOrder', {"txid": "OXMUAX-P5CDF-IEMWXN"}, function(error, data) {
 //     if(error) {
 //         console.log(error);
