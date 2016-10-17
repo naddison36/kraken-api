@@ -163,6 +163,7 @@ function KrakenClient(key, secret, otp) {
 		return req;
 	}
 
+	self.config 		= config;
 	self.api			= api;
 	self.publicMethod	= publicMethod;
 	self.privateMethod	= privateMethod;

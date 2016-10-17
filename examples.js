@@ -75,6 +75,16 @@ var client = new Kraken(key, secret);
 //     }
 // });
 //
+// // get order information with trade ids
+// client.api('QueryOrders', {"txid": "OADWQW-4BSC7-ZECXTG", "trades": true}, function(error, data) {
+//     if(error) {
+//         console.log(error);
+//     }
+//     else {
+//         console.log(JSON.stringify(data.result));
+//     }
+// });
+//
 // // get all open orders
 // client.api('OpenOrders', null, function(error, data) {
 //     if(error) {
