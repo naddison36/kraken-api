@@ -150,7 +150,9 @@ function KrakenClient(key, secret, otp) {
 				}
 
 				if(data.error && data.error.length) {
-					callback.call(self, new VError('Error returned from %s. Error: ', requestDesc, data.error), null);
+					var error = new VError('Error returned from %s. Error: %s', requestDesc, data.error.toString());
+					error.name = data.error[0];
+					callback.call(self, error, null);
 				}
 				else {
 					callback.call(self, null, data);

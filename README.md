@@ -24,7 +24,7 @@ kraken.api('Balance', null, function(error, data) {
 });
 
 // Get Ticker Info
-kraken.api('Ticker', {"pair": 'XBTCXLTC'}, function(error, data) {
+kraken.api('Ticker', {"pair": 'XBTCZUSD'}, function(error, data) {
     if(error) {
         console.log(error);
     }
